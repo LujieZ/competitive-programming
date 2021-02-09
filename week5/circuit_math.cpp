@@ -78,7 +78,7 @@ int main(){
                 q.push_back(result);
             }
         }
-        ch = getchar();
+        ch = getchar(); // getline() instead
     }
     char result = q.back() == true? 'T':'F';
     printf("%s", result);

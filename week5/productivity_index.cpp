@@ -1,3 +1,4 @@
+#include <algorithm> 
 #include <cstdio>
 #include <cstring>
 #include <stdio.h>
@@ -7,6 +8,7 @@
 #include <vector>
 #include <queue>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 // type and functions defs
@@ -35,5 +37,36 @@ typedef pair<int, int> II;
 typedef vector<int> VI;
 typedef vector<II> VII;
 
-// ???
+int probs[200000];
 
+float helper(int i, int j, int k){
+    if (i == k){
+        if (j == 0) {
+            return 0;
+        } return pow(j, j/k);
+    }
+    return probs[i-1] * helper(i+1, j+1, k) + (1-probs[i-1]) * helper(i+1, j, k);
+}
+
+int main(){
+    int n;
+    cin >> n;   
+    cin.ignore();
+    string probs;
+    getline(cin, probs);
+    stringstream stream(probs);
+    string prob_str;
+    int prob;
+    int i=0;
+    while(getline(stream, prob_str, ' ')) {
+        prob = stoi(prob_str);
+        probs[++i] = prob;
+    }
+    std::sort(std::begin(probs), std::end(probs), greater());
+    float max_prob = 0;
+    for (int k=1;k<=n;k++){
+        max_prob = max(max_prob, helper(0, 0, k)); 
+    }
+    printf("%.9f", max_prob);
+    return 0;
+}

@@ -1,3 +1,4 @@
+#include <algorithm> 
 #include <cstdio>
 #include <cstring>
 #include <stdio.h>
@@ -7,6 +8,7 @@
 #include <vector>
 #include <queue>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 // type and functions defs
@@ -35,5 +37,29 @@ typedef pair<int, int> II;
 typedef vector<int> VI;
 typedef vector<II> VII;
 
-// ???
-
+int main(){
+    string s;
+    getline(cin, s);
+    int n = s.size();
+    int count = 0;
+    int i;
+    bool flag;
+    for (int a=0;a<n-1;a++){
+        i = a+1;
+        flag = true;
+        map<char, int> m;
+        m.insert({s[a], 1});
+        while (i<n && flag){
+            if (s[a] == s[i]){
+                flag = false;
+            }
+            if (m.find(s[i]) == m.end()){
+                m.insert({s[i], 1});
+                count++;
+            }
+            ++i;
+        }
+    }
+    printf("%d", count);
+    return 0;
+}

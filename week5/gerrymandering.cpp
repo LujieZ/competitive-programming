@@ -66,6 +66,6 @@ int main(){
         total_wasteA += waste_A;
         total_wasteB += waste_B;
      }
-    printf("%.9f\n", abs(total_wasteA - total_wasteB) / total_vote);
+    printf("%.10f\n", abs(total_wasteA - total_wasteB) / total_vote);
     return 0;
  }

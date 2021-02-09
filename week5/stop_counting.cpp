@@ -1,3 +1,4 @@
+#include <algorithm> 
 #include <cstdio>
 #include <cstring>
 #include <stdio.h>
@@ -7,6 +8,7 @@
 #include <vector>
 #include <queue>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 // type and functions defs
@@ -35,5 +37,22 @@ typedef pair<int, int> II;
 typedef vector<int> VI;
 typedef vector<II> VII;
 
-// ???
+int main(){
+    int n;
+    cin >> n;   
+    cin.ignore();
+    string numbers;
+    getline(cin, numbers);
+    stringstream stream(numbers);
+    string num_str;
+    int nums[n];
+    int num;
+    int i=0;
+    while(getline(stream, num_str, ' ')) {
+        num = stoi(num_str);
+        nums[++i] = num;
+    }
+    // int arr[i][j] to save the average of elements from i to j inclusive
+    // find out the largest mean for a prefix array and a postfix array
 
+}
